@@ -3,63 +3,83 @@ A calculator for Kaprekar's constant
 
 
 ## About Kaprekars Constant:
+Kaprekar's constant, named after Indian mathematician D. R. Kaprekar, refers to the number 6174, which emerges from a fascinating process known as Kaprekar's routine. This routine reveals how a simple algorithm can lead to a fixed point, showcasing the elegance of number theory.
 
-Kaprekar's constant is a mathematical concept named after the Indian mathematician D.R. Kaprekar. It is also known as the 6174 or the Kaprekar's routine.
+The process works as follows:
 
-The constant is derived from the process of repeatedly subtracting the smallest number that can be formed from a four-digit number created by arranging its 
-digits in descending order from the largest number that can be formed by arranging its digits in ascending order. For example, starting with the number 
-4321, the process would be as follows:
+Start with any four-digit number that has at least two different digits.
 
+Rearrange its digits to form the largest and smallest possible numbers.
 
-Arrange the digits in descending order: 4321
+Subtract the smaller number from the larger.
 
-Arrange the digits in ascending order: 1234
+Repeat the process with the result.
 
-Subtract the smaller number from the larger number: 4321 - 1234 = 3087
+This routine will always reach 6174 within at most seven iterations. Once 6174 is reached, the process becomes stable:
+7641 − 1467 = 6174, repeating indefinitely.
 
-Repeat the process with the result: 8730 - 0378 = 8352 - 2358 = 6174
+Example:
 
+Starting with 4321:
 
-The process will always result in the number 6174 after at most 7 iterations, regardless of the starting number. Once 6174 is reached, the process will 
-continue to produce the same result of 6174 with each subsequent iteration.
+Descending: 4321
 
-Kaprekar's constant is interesting because it demonstrates how even simple mathematical processes can lead to complex and unexpected results.
+Ascending: 1234
 
+Subtract: 4321 − 1234 = 3087
 
+Next: 8730 − 0378 = 8352
 
+Then: 8532 − 2358 = 6174
+
+No matter the valid starting number, the routine converges to 6174, making it a simple yet surprising demonstration of deterministic behavior in mathematics.
+
+This project implements Kaprekar’s routine programmatically, highlighting how concise logic and iteration can uncover mathematical patterns.
 
 
 ## About the Calculator:
-This is a Python program that calculates Kaprekar's constant for a given four-digit number.
+This is a simple Python program that calculates Kaprekar's constant (6174) for any valid four-digit number using Kaprekar's routine.
 
 ### Prerequisites 
-
-Before running the program, you need to make sure that Python 3 is installed on your computer. If it is not, you can download it from the official 
-Python website: https://www.python.org/downloads/
+Before running the program, ensure that Python 3 is installed on your system.
+You can download it from the official website: https://www.python.org/downloads/
 
 ### Usage 
 
-To use the program, simply run the kc.py file from the command line:
+To run the program, open a terminal and execute the script:
 
 python3 kc.py <br/>
-You will be prompted to enter a four-digit number. Once you enter the number, the program will arrange the 4 digits in both ascending and desending 
-order, subtract the smaller number from the larger, print the results and repeat until Kaprekar's constant(6174) is reached.
+
+You will be prompted to enter a four-digit number. The program will then:
+
+Rearrange the digits in descending and ascending order.
+
+Subtract the smaller number from the larger.
+
+Display each step of the calculation.
+
+Repeat the process until it reaches Kaprekar's constant (6174).
 
 ### Example 
 Here is an example of how to use the program:
 
-python3 kc.py <br/>
-Give me a 4 digit number: 1224 <br/>
-1224 <br/>
-4221 - 1224 = 2997 <br/>
-9972 - 2799 = 7173 <br/>
-7731 - 1377 = 6354 <br/>
-6543 - 3456 = 3087 <br/>
-8730 - 0378 = 8352 <br/>
+$ python3 kc.py
+Give me a 4 digit number: 1224
+1224
+4221 - 1224 = 2997
+9972 - 2799 = 7173
+7731 - 1377 = 6354
+6543 - 3456 = 3087
+8730 - 0378 = 8352
 8532 - 2358 = 6174
 
-
 ### Limitations 
-There are some limitations to the 4 digit numbers that can be used to achieve Kaprekar's constant. If 3 of the 4 digits are the same, the 4th digit can 
-not also be the same, or 1 digit greater or less than the other 3 repeating digits. for example, 1111, 1112 & 1113 will not work.
+There are a few important constraints to keep in mind:
 
+The number must be four digits long (numbers like 0999 or 100 will not work unless padded or validated properly).
+
+It must contain at least two different digits. Numbers with all identical digits (e.g., 1111, 2222) will always subtract to zero, not 6174.
+
+The process does not work with fewer than four digits without modification (though similar routines exist for 3-digit numbers and other bases).
+
+The program includes basic input validation to ensure these conditions are met.
